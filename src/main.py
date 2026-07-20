@@ -24,7 +24,9 @@ def generate_page(from_path, template_path, dest_path):
         file_template = template.replace("{{ Title }}", title)
         file_template = file_template.replace("{{ Content }}", html)
         file_template = file_template.replace('href="/', f'href="{basepath}')
+        file_template = file_template.replace('href=/', f'href={basepath}')
         file_template = file_template.replace('src="/', f'src="{basepath}')
+        file_template = file_template.replace('src=/', f'src={basepath}')
         dir = os.path.dirname(dest_path)
         if os.path.exists(dir) is False:
             os.makedirs(dir)
