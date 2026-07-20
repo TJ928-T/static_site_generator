@@ -6,7 +6,10 @@ from copy_files_to_dir import clean_directory, copy_files_dir
 
 
 
-basepath = sys.argv
+sys_path = sys.argv
+basepath = "/"
+if len(sys_path) > 1:
+    basepath = sys_path[1]
 
 def generate_page(from_path, template_path, dest_path):
     print(f"Generating page from {from_path} to {dest_path} using {template_path}")
@@ -20,8 +23,8 @@ def generate_page(from_path, template_path, dest_path):
         title = extract_title(md)
         file_template = template.replace("{{ Title }}", title)
         file_template = file_template.replace("{{ Content }}", html)
-        file_template = file_template.replace('href=/"', f"href=/{basepath}")
-        file_template = file_template.replace('src=/"', f"src=/{basepath}")
+        file_template = file_template.replace('href="/', f'href="{basepath}')
+        file_template = file_template.replace('src="/', f'src="{basepath}')
         dir = os.path.dirname(dest_path)
         if os.path.exists(dir) is False:
             os.makedirs(dir)
