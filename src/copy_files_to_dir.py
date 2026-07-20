@@ -4,10 +4,10 @@ import shutil
 
 
 
-def clean_directory():
-    if os.path.exists("./public") == True:
-        shutil.rmtree("./public")
-    os.mkdir("./public")
+def clean_directory(path):
+    if os.path.exists(path) == True:
+        shutil.rmtree(path)
+    os.mkdir(path)
 
 def copy_files_dir(src_path, new_dir):
     if os.path.isdir(src_path):
